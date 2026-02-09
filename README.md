@@ -1,12 +1,16 @@
 # Walkthrough Skill
 
-A Claude Code skill that generates interactive HTML walkthroughs with clickable Mermaid diagrams — flowcharts and ER diagrams — to explain codebase features, flows, architecture, and database schemas.
+An AI agent skill that generates interactive HTML walkthroughs with clickable Mermaid diagrams — flowcharts and ER diagrams — to explain codebase features, flows, architecture, and database schemas.
+
+This is a fork of [alexanderop/walkthrough](https://github.com/alexanderop/walkthrough) with improvements.
+
+**What's different:** This version extracts and displays actual code snippets from your codebase in the walkthrough, giving you concrete examples alongside the visual explanation.
 
 Inspired by [Amp's Shareable Walkthroughs](https://ampcode.com/news/walkthrough).
 
 ## What it does
 
-Ask Claude to walk you through any part of your codebase and it produces a self-contained HTML file with:
+Ask your AI agent to walk you through any part of your codebase and it produces a self-contained HTML file with:
 
 - A **clickable Mermaid diagram** (flowchart or ER diagram) showing the key concepts and their connections
 - A **detail panel** for each node with a plain-English description, file paths, and optional code snippets
@@ -16,13 +20,9 @@ Ask Claude to walk you through any part of your codebase and it produces a self-
 
 The goal is fast onboarding: give a new developer a mental model of how something works in under 2 minutes. Not a code reference — a map.
 
-**[Live demo — walkthrough of the walkthrough skill itself](https://alexanderop.github.io/walkthrough/examples/walkthrough-how-it-works.html)**
-
-![Generated walkthrough example](image.png)
-
 ## Usage
 
-Trigger the skill with prompts like:
+Trigger the skill by prompting your agent:
 
 ```
 walkthrough how does authentication work
@@ -33,7 +33,7 @@ database schema
 explain the tables
 ```
 
-Claude will:
+Your agent will:
 1. Explore the relevant parts of your codebase using parallel subagents
 2. Synthesize findings into 5-12 key concepts and their connections
 3. Generate a single `walkthrough-{topic}.html` file in the project root
@@ -53,38 +53,16 @@ Claude will:
 **Data flow:**
 > How does state flow from the composable to the component?
 
-## Installation
-
-### Quick install
-
-```bash
-npx skills add https://github.com/alexanderop/walkthrough --skill walkthrough
-```
-
-### Manual install
-
-Copy the `skills/walkthrough/` directory into your project's `.claude/skills/` folder:
-
-```
-your-project/
-  .claude/
-    skills/
-      walkthrough/
-        skill.md
-        references/
-          html-patterns.md
-```
-
 ## Structure
 
 ```
-skills/walkthrough/
-  skill.md                      # Main skill definition
+walkthrough/
+  SKILL.md                      # Main skill definition
   references/
     html-patterns.md            # HTML template, CSS, and JS patterns reference
 ```
 
-- **skill.md** — The skill prompt that Claude follows. Defines the workflow: scope understanding, parallel codebase exploration, diagram type selection, and HTML generation.
+- **SKILL.md** — The skill prompt that your agent follows. Defines the workflow: scope understanding, parallel codebase exploration, diagram type selection, and HTML generation.
 - **references/html-patterns.md** — Complete reference for the generated HTML files: React component architecture, Mermaid config, Shiki setup, color palette, pan/zoom implementation, and all the patterns needed to produce a working walkthrough.
 
 ## Tech stack (generated files)
