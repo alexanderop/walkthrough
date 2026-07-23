@@ -152,12 +152,12 @@ const NODES = {
   userPrompt: {
     title: "User Prompt",
     description: "The natural-language request that kicks off the walkthrough. Triggers include phrases like \"walkthrough\", \"explain this flow\", \"how does X work\", or \"database schema\". The skill matches these patterns and activates automatically.",
-    files: ["skills/walkthrough/skill.md:1-3"],
+    files: ["skills/walkthrough/SKILL.md:1-3"],
   },
   skillDefinition: {
     title: "Skill Definition",
     description: "The main skill file that defines the entire workflow the AI agent follows. It specifies the four-step process: understand scope, explore with subagents, choose diagram type, and generate HTML. Also contains the quality checklist and Mermaid conventions.",
-    files: ["skills/walkthrough/skill.md"],
+    files: ["skills/walkthrough/SKILL.md"],
     code: `---
 name: walkthrough
 description: Generate interactive HTML walkthroughs
@@ -173,12 +173,12 @@ description: Generate interactive HTML walkthroughs
   scopeUnderstanding: {
     title: "Scope Understanding",
     description: "The AI agent clarifies what the user wants explained — a feature flow, data flow, architecture overview, request lifecycle, or database schema. The goal is to frame the walkthrough as a mental model with 5-12 key concepts.",
-    files: ["skills/walkthrough/skill.md:14-26"],
+    files: ["skills/walkthrough/SKILL.md:14-26"],
   },
   parallelExploration: {
     title: "Parallel Subagents",
     description: "The AI agent launches 2-4 Explore subagents in parallel using the Task tool. Each agent investigates one area of the codebase and returns a structured report with node IDs, labels, purposes, connections, and file paths. This keeps the main context clean.",
-    files: ["skills/walkthrough/skill.md:28-84"],
+    files: ["skills/walkthrough/SKILL.md:28-84"],
     code: `// Launch parallel Explore subagents
 Task(subagent_type: "Explore", prompt:
   "Explore user input handling...")
@@ -189,17 +189,17 @@ Task(subagent_type: "Explore", prompt:
   synthesis: {
     title: "Synthesis",
     description: "Once all subagents return, the AI agent combines their findings into a node list (ID, label, files, description), an edge list (connections with verb labels), and subgraph groupings. The target is 5-12 nodes total — each representing a concept, not a function.",
-    files: ["skills/walkthrough/skill.md:86-94"],
+    files: ["skills/walkthrough/SKILL.md:86-94"],
   },
   diagramSelection: {
     title: "Diagram Selection",
     description: "The AI agent picks the right Mermaid diagram type based on the topic. Feature flows and architecture get flowcharts (graph TD/LR). Database schemas get ER diagrams. Mixed topics can use both side by side.",
-    files: ["skills/walkthrough/skill.md:96-167"],
+    files: ["skills/walkthrough/SKILL.md:96-167"],
   },
   htmlOutput: {
     title: "HTML Output",
     description: "A single self-contained HTML file written to the project root. Uses React 18 (UMD), Tailwind CSS (CDN), Mermaid 11, and Shiki for syntax highlighting. No build step — everything loads from CDNs. Always dark mode with a purple accent palette.",
-    files: ["skills/walkthrough/skill.md:169-209", "skills/walkthrough/references/html-patterns.md"],
+    files: ["skills/walkthrough/SKILL.md:169-209", "skills/walkthrough/references/html-patterns.md"],
   },
   interactiveViewer: {
     title: "Interactive Viewer",
