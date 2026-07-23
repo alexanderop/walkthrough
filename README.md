@@ -70,7 +70,7 @@ your-project/
   .claude/
     skills/
       walkthrough/
-        skill.md
+        SKILL.md
         references/
           html-patterns.md
 ```
@@ -79,12 +79,12 @@ your-project/
 
 ```
 skills/walkthrough/
-  skill.md                      # Main skill definition
+  SKILL.md                      # Main skill definition
   references/
     html-patterns.md            # HTML template, CSS, and JS patterns reference
 ```
 
-- **skill.md** — The skill prompt that the agent follows. Defines the workflow: scope understanding, parallel codebase exploration, diagram type selection, and HTML generation.
+- **SKILL.md** — The skill prompt that the agent follows. Defines the workflow: scope understanding, parallel codebase exploration, diagram type selection, and HTML generation.
 - **references/html-patterns.md** — Complete reference for the generated HTML files: React component architecture, Mermaid config, Shiki setup, color palette, pan/zoom implementation, and all the patterns needed to produce a working walkthrough.
 
 ## Tech stack (generated files)
